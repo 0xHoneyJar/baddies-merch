@@ -2,12 +2,13 @@
 
 import { useSearchParams, useRouter, usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+import { SearchIcon } from "lucide-react";
 import { Input } from "@/ui/shadcn/input";
 import { cn } from "@/lib/utils";
 import { useDebouncedValue } from "@/lib/hooks";
 
 const inputClasses = cn(
-	"min-w-14 md:max-w-72 appearance-none rounded-md border bg-white py-2 pl-4 pr-10 md:pl-2 md:pr-8 lg:pl-4 lg:pr-10 transition-opacity inline-block",
+	"min-w-14 md:max-w-72 appearance-none placeholder:text-[#B7B7B7] rounded-full border bg-white py-4 text-sm pl-4 pr-10 md:pl-2 md:pr-8 lg:pl-4 lg:pr-10 transition-opacity inline-block",
 );
 
 export const SearchInputPlaceholder = ({ placeholder }: { placeholder: string }) => {
@@ -55,17 +56,20 @@ export const SearchInput = ({ placeholder }: { placeholder: string }) => {
 	}, [pathname]);
 
 	return (
-		<Input
-			onChange={(e) => {
-				const query = e.target.value;
-				setQuery(query);
-			}}
-			className={inputClasses}
-			placeholder={placeholder}
-			type="search"
-			enterKeyHint="search"
-			name="search"
-			value={query}
-		/>
+		<div className="relative flex items-center">
+			<Input
+				onChange={(e) => {
+					const query = e.target.value;
+					setQuery(query);
+				}}
+				className={inputClasses}
+				placeholder={placeholder}
+				type="search"
+				enterKeyHint="search"
+				name="search"
+				value={query}
+			/>
+			<SearchIcon className="absolute right-4 size-5 text-[#B7B7B7]" />
+		</div>
 	);
 };
