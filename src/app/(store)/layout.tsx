@@ -20,7 +20,18 @@ export default async function StoreLayout({
 
 	return (
 		<div className="relative flex flex-col items-center justify-center">
-			<Image src="/bg_clouds.png" alt="" fill className="absolute inset-0 z-0" />
+			<Image
+				src="/bg_clouds.png"
+				alt=""
+				fill
+				className="absolute inset-0 z-0 object-contain object-top"
+			/>
+			<Image
+				src="/bg_clouds2.png"
+				alt=""
+				fill
+				className="absolute inset-0 z-0 object-contain object-bottom"
+			/>
 			<div className="relative z-10 flex size-full flex-col items-center justify-center">
 				<Nav />
 				<TooltipProvider>
